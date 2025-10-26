@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Project - {{ project.name }}</title>
+</head>
+<body>
+    <h1>Update Project</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="{{ project.name }}" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description">{{ project.description }}</textarea><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+    <p><a href="{% url 'project_list' %}">Cancel</a></p>
+</body>
+</html>
