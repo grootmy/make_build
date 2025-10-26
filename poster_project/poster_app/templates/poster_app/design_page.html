@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Design - {{ project.name }}</title>
+    <style>
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .chat-ui {
+            width: 30%;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-history {
+            flex-grow: 1;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .chat-message {
+            margin-bottom: 5px;
+        }
+        .chat-message.user {
+            text-align: right;
+        }
+        .chat-message.bot {
+            text-align: left;
+        }
+        .preview-canvas {
+            width: 70%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .poster-preview {
+            width: 500px;
+            height: 750px;
+            border: 1px solid #000;
+            padding: 20px;
+            background-color: {{ design_data.background_color }};
+            font-family: {{ design_data.title_font }};
+            color: #fff;
+            text-align: center;
+        }
+        .poster-preview h1 {
+            font-size: 48px;
+        }
+        .poster-preview p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Design for {{ project.name }}</h1>
+    <div class="container">
+        <div class="chat-ui">
+            <h2>Chat</h2>
+            <div class="chat-history">
+                {% for entry in chat_history %}
+                    <div class="chat-message {{ entry.sender }}">
+                        <strong>{{ entry.sender }}:</strong> {{ entry.message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="text" placeholder="Type your message here...">
+        </div>
+        <div class="preview-canvas">
+            <div class="poster-preview">
+                <h1>{{ design_data.title_text }}</h1>
+                <p>{{ design_data.body_text }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
