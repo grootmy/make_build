@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Poster Design Service</title>
-</head>
-<body>
-    <h1>Welcome to the Poster Design Service</h1>
-    <p>Create stunning posters using our chat-based design tool.</p>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signup' %}">Sign Up</a>
-</body>
-</html>
+{% extends 'poster_app/base.html' %}
+
+{% block title %}Welcome - Poster Design Service{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Poster Design Service</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Create stunning posters using our innovative chat-based design tool. Sign up now to start bringing your ideas to life!</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-4 gap-3">Sign Up</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

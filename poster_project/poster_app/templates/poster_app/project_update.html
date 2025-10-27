@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Update Project - {{ project.name }}</title>
-</head>
-<body>
-    <h1>Update Project</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" value="{{ project.name }}" required><br><br>
+{% extends 'poster_app/base.html' %}
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description">{{ project.description }}</textarea><br><br>
+{% block title %}Update Project{% endblock %}
 
-        <button type="submit">Update</button>
-    </form>
-    <p><a href="{% url 'project_list' %}">Cancel</a></p>
-</body>
-</html>
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2>Update Project: {{ project.name }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ project.name }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description">{{ project.description }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{% url 'project_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
